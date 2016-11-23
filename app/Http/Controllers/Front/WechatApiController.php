@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
-class WechatApiController extends Controllers
+class WechatApiController extends Controller
 {
     public function valid()
     {
