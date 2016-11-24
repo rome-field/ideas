@@ -25,7 +25,7 @@ class WechatApiController extends Controller
     {
         $access_token = Cache::get('access_token');
         if(!$access_token){
-            $access_token = resoloveToken();
+            $access_token = $this->resoloveToken();
         }
         return $access_token;
     }
@@ -40,7 +40,7 @@ class WechatApiController extends Controller
         }
 
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$app_id&secret=$app_secret";
-        $res = json_decode($file_get_contents($url), true);
+        $res = json_decode(file_get_contents($url), true);
         if(isset($res['access_token']))
         {
             Cache::put('access_token', $res['access_token'], (int)($res['expires_in']-60)/60);
