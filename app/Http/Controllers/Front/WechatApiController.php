@@ -40,7 +40,7 @@ class WechatApiController extends Controller
         }
 
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$app_id&secret=$app_secret";
-        $res = json_decode(file_get_contents($url), true);
+        $res = $this->curlWechatApi($url, "access_token");
         if(isset($res['access_token']))
         {
             Cache::put('access_token', $res['access_token'], (int)($res['expires_in']-60)/60);
@@ -48,6 +48,15 @@ class WechatApiController extends Controller
         }else {
             throw new Exception("didn't get wechat access_token:".$res['errmsg'], 1);
         }
+    }
+
+    private function curlWechatApi($url, $opt, mixed $data=null)
+    {
+        $curl = curl_init();
+        curl_setopt ($curl, CURLOPT_URL, $url);
+        $res=curl_exec($curl);
+        curl_close($curl);
+        return json_decode($res, true);
     }
 
     private function checkSignature()
