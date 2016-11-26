@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 //Route::get('/wx/test', 'Front\WechatApiController@valid' );
-Route::get('/wx', 'Front\WechatApiController@valid' );
+Route::get('/wx', 'Front\WechatIndexController@valid' );
