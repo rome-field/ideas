@@ -70,7 +70,7 @@ class WechatApi
         }
 
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$app_id&secret=$app_secret";
-        $res = $this->curl_get($url, "access_token");
+        $res = $this->curl_opt($url, "access_token");
 
         if(!$res)
         {
@@ -101,7 +101,7 @@ class WechatApi
         curl_close($curl);
         if (isset($status['http_code']) && $status['http_code'] == 200)
         {
-            if(data_type == "json"){
+            if($data_type == "json"){
                 return json_decode($res, true);
             }
             return $res;

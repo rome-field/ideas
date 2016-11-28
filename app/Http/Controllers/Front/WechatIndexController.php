@@ -58,7 +58,7 @@ class WechatIndexController extends Controller
         if($res == 0){
             return "success";
         } else {
-            return "failed. error code: ".$res;
+            return "failed. error code: ".$res." access_token: ".$wechat->getAccessToken();
         }
     }
 }
