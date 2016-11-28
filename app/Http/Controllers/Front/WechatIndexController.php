@@ -38,7 +38,7 @@ class WechatIndexController extends Controller
 
     public function create_menu(WechatApi $wechat)
     {
-        $menu_data =  {
+        $menu_data = '{
             "button":[
                 {
                     "type":"view",
@@ -46,12 +46,12 @@ class WechatIndexController extends Controller
                     "url":"www.sogou.com",
                 },
                 {
-                    'type':'view',
-                    'name':'大家说',
-                    'url':"www.baidu.com",
+                    "type":"view",
+                    "name":"大家说",
+                    "url":"www.baidu.com",
                 },
             ]
-        };
+        }';
 
         $res = $wechat->createMenu($menu_data);
 
