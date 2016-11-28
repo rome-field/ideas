@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/wx/test', 'Front\WechatApiController@valid' );
+Route::get('/wx/test', 'Front\WechatApiController@create_menu' );
 Route::get('/wx', 'Front\WechatIndexController@valid' );
